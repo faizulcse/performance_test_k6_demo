@@ -1,0 +1,25 @@
+k6 key points:
+=========================================
+export const options = {
+}
+
+scenario name: default
+executor name: per-vu-iterations
+tags:{"scenario":"default","group":""}
+iteration: 0
+instance: 1
+vu: 1
+
+Types of executors based on virtual users :
+---------------------------------------------
+1. per-vu-iterations: (Each VU executes an exact number of iterations) i.e ==> execute fixed sets of test data
+2. shared-iterations: (A specific number of VUs to complete a fixed number of total iterations) i.e ==> time to complete iterations
+3. constants-vus: (A specific number of VUs to run for a certain amount of time) i.e ==> for a specified amount of time
+4. ramping-vus: (VUs need to ramp up or down during specific periods of time) i.e ==> for ramping up or down vus during specific periods of time
+
+Types of executors based on iterations:
+---------------------------------------------
+1. constant-arrival-rate: i.e ==> fixed number of iterations over a specified period of time
+2. ramping-arrival-rate: i.e ==> for ramping up or down iterations during specific periods of time
+3. externally-controlled: i.e ==> control and scale execution at runtime via k6's REST API
+NB: Don't use any sleep after iterations completed
