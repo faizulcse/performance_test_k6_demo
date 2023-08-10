@@ -23,3 +23,41 @@ Types of executors based on iterations:
 2. ramping-arrival-rate: i.e ==> for ramping up or down iterations during specific periods of time
 3. externally-controlled: i.e ==> control and scale execution at runtime via k6's REST API
 NB: Don't use any sleep after iterations completed
+
+Metrics: (Metrics measure how a system performs under test conditions)
+======================================================================
+Types of Metrics:
+1. Counter: ===> count total values.
+2. Gauge: ===> track the smallest, largest, and latest values.
+3. Rate: ===> track how frequently a non-zero value occurs.
+4. Trend: ===> calculates statistics for multiple values (like mean, mode or percentile)
+
+Build in Metrics:
+-----------------------------------------------------------------
+checks.........................: 100.00% ✓ 1        ✗ 0
+data_received..................: 204 B   216 B/s
+data_sent......................: 105 B   111 B/s
+http_req_blocked...............: avg=1.69ms   min=1.69ms   med=1.69ms   max=1.69ms   p(90)=1.69ms   p(95)=1.69ms
+http_req_connecting............: avg=326µs    min=326µs    med=326µs    max=326µs    p(90)=326µs    p(95)=326µs
+http_req_duration..............: avg=939ms    min=939ms    med=939ms    max=939ms    p(90)=939ms    p(95)=939ms
+http_req_failed................: 0.00%   ✓ 0        ✗ 1
+http_req_receiving.............: avg=129µs    min=129µs    med=129µs    max=129µs    p(90)=129µs    p(95)=129µs
+http_req_sending...............: avg=482µs    min=482µs    med=482µs    max=482µs    p(90)=482µs    p(95)=482µs
+http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+http_req_waiting...............: avg=938.39ms min=938.39ms med=938.39ms max=938.39ms p(90)=938.39ms p(95)=938.39ms
+http_reqs......................: 1       1.060842/s
+iteration_duration.............: avg=942.81ms min=942.81ms med=942.81ms max=942.81ms p(90)=942.81ms p(95)=942.81ms
+iterations.....................: 1       1.060842/s
+
+Custom Metrics:
+-----------------------------------------------------------------
+const myCounter = new Counter('my_counter');
+const myGauge = new Gauge('my_gauge');
+const myRate = new Rate('my_rate');
+const myTrend = new Trend('my_trend');
+
+Group:
+=======================================================================
+ get_api,
+ update_api,
+ delete_api

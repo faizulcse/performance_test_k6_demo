@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:demo": "k6 run sample.js"
+    "test:sample": "k6 run src/tests/sample.js",
+    "test:metrics": "k6 run src/tests/metrics.js",
+    "test:group": "k6 run src/tests/group.js",
+    "test:environment":"k6 run src/tests/environement.js -e HOST_URL='https://reqres.in/api/users/2'"
   },
   "keywords": [],
   "author": "",
