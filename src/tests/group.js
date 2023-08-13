@@ -1,6 +1,6 @@
-import exec from "k6/execution";
 import http from "k6/http";
 import {check, group, sleep} from "k6";
+import {envData} from "../utils/file_helper.js";
 
 export const options = {
     scenarios: {
@@ -17,16 +17,14 @@ export const options = {
     }
 }
 export default function () {
-    console.info(`Iterations id ==>  ${exec.scenario.iterationInTest} VU id ==> ${exec.vu.idInTest}`);
-
-    group("passed_request", () => {
-        const res = http.get("https://reqres.in/api/users/2");
+    group("valid_api_request", () => {
+        const res = http.get(`${envData.baseUrl}/api/users/2`);
         check(res, {'is status 200': (r) => r.status === 200});
     })
 
-    group("failed_request", () => {
-        const res2 = http.get("https://reqres.in/api/unknown/23");
-        check(res2, {'is status 404': (r) => r.status === 404});
+    group("invalid_api_request", () => {
+        const res = http.get(`${envData.baseUrl}/api/unknown/23`);
+        check(res, {'is status 404': (r) => r.status === 404});
     })
 
     sleep(1);

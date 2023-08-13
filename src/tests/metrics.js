@@ -1,7 +1,7 @@
-import exec from "k6/execution";
 import http from "k6/http";
 import {check, sleep} from "k6";
 import {Counter} from "k6/metrics";
+import {envData} from "../utils/file_helper.js";
 
 const allError = new Counter("error_count");
 export const options = {
@@ -22,14 +22,12 @@ export const options = {
     }
 }
 export default function () {
-    console.info(`Iterations id ==>  ${exec.scenario.iterationInTest} VU id ==> ${exec.vu.idInTest}`);
-
-    const res = http.get("https://reqres.in/api/users/2");
+    const res = http.get(`${envData.baseUrl}/api/users/2`);
     if (res.status >= 400)
         allError.add(1);
     check(res, {'is status 200': (r) => r.status === 200});
 
-    const res2 = http.get("https://reqres.in/api/unknown/23");
+    const res2 = http.get(`${envData.baseUrl}/api/unknown/23`);
     if (res2.status >= 400)
         allError.add(1);
 
