@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:sample": "./k6 run src/tests/sample.js -e HOST_NAME=req_res",
-    "test:group": "./k6 run src/tests/group.js -e HOST_NAME=req_res",
-    "test:metrics": "./k6 run src/tests/metrics.js -e HOST_NAME=req_res",
-    "test:csvdata_scenario": "./k6 run src/tests/csvdata_scenario.js -e HOST_NAME=req_res",
-    "test:jsondata_scenario": "./k6 run src/tests/jsondata_scenario.js -e HOST_NAME=req_res"
+    "test:sample": "./k6 run --out dashboard src/tests/sample.js -e HOST_NAME=req_res",
+    "test:group": "./k6 run --out dashboard src/tests/group.js -e HOST_NAME=req_res",
+    "test:custom_metrics": "./k6 run --out dashboard src/tests/custom_metrics.js -e HOST_NAME=req_res",
+    "test:csvdata_scenario": "./k6 run --out dashboard src/tests/csvdata_scenario.js -e HOST_NAME=req_res",
+    "test:jsondata_scenario": "./k6 run --out dashboard src/tests/jsondata_scenario.js -e HOST_NAME=req_res"
   },
   "keywords": [],
   "author": "",

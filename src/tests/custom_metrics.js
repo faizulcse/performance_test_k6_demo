@@ -2,11 +2,13 @@ import http from "k6/http";
 import {check, sleep} from "k6";
 import {Counter} from "k6/metrics";
 import {envData} from "../utils/file_helper.js";
+import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+import {textSummary} from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
 
 const allError = new Counter("error_count");
 export const options = {
     thresholds: {
-        "error_count": [{threshold: 'count < 10', abortOnFail: true}]
+        "error_count": [{threshold: 'count < 10'}]
     },
     scenarios: {
         smoke: {
@@ -23,14 +25,14 @@ export const options = {
 }
 export default function () {
     const res = http.get(`${envData.baseUrl}/api/users/2`);
-    if (res.status >= 400)
-        allError.add(1);
     check(res, {'is status 200': (r) => r.status === 200});
-
-    const res2 = http.get(`${envData.baseUrl}/api/unknown/23`);
-    if (res2.status >= 400)
-        allError.add(1);
-
+    allError.add(res !== 200);
     sleep(1);
 }
 
+export function handleSummary(data) {
+    return {
+        "summary.html": htmlReport(data),
+        stdout: textSummary(data, {indent: " ", enableColors: true}),
+    };
+}
