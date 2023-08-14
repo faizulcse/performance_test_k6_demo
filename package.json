@@ -9,7 +9,9 @@
     "test:group": "./k6 run --out dashboard src/tests/group.js -e HOST_NAME=req_res",
     "test:custom_metrics": "./k6 run --out dashboard src/tests/custom_metrics.js -e HOST_NAME=req_res",
     "test:csvdata_scenario": "./k6 run --out dashboard src/tests/csvdata_scenario.js -e HOST_NAME=req_res",
-    "test:jsondata_scenario": "./k6 run --out dashboard src/tests/jsondata_scenario.js -e HOST_NAME=req_res"
+    "test:jsondata_scenario": "./k6 run --out dashboard src/tests/jsondata_scenario.js -e HOST_NAME=req_res",
+    "test:csvdata_test": "./k6 run --out dashboard src/tests/csvdata_test.js -e HOST_NAME=req_res",
+    "test:jsondata_test": "./k6 run --out dashboard src/tests/jsondata_test.js -e HOST_NAME=req_res"
   },
   "keywords": [],
   "author": "",
