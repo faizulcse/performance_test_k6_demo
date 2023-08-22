@@ -11,7 +11,14 @@
     "test:csvdata_scenario": "./k6 run --out dashboard src/tests/csvdata_scenario.js -e HOST_NAME=req_res",
     "test:jsondata_scenario": "./k6 run --out dashboard src/tests/jsondata_scenario.js -e HOST_NAME=req_res",
     "test:csvdata_test": "./k6 run --out dashboard src/tests/csvdata_test.js -e HOST_NAME=req_res",
-    "test:jsondata_test": "./k6 run --out dashboard src/tests/jsondata_test.js -e HOST_NAME=req_res"
+    "test:jsondata_test": "./k6 run --out dashboard src/tests/jsondata_test.js -e HOST_NAME=req_res",
+    "test_windows:sample": "k6.exe run --out dashboard src/tests/sample.js -e HOST_NAME=req_res",
+    "test_windows:group": "k6.exe run --out dashboard src/tests/group.js -e HOST_NAME=req_res",
+    "test_windows:custom_metrics": "k6.exe run --out dashboard src/tests/custom_metrics.js -e HOST_NAME=req_res",
+    "test_windows:csvdata_scenario": "k6.exe run --out dashboard src/tests/csvdata_scenario.js -e HOST_NAME=req_res",
+    "test_windows:jsondata_scenario": "k6.exe run --out dashboard src/tests/jsondata_scenario.js -e HOST_NAME=req_res",
+    "test_windows:csvdata_test": "k6.exe run --out dashboard src/tests/csvdata_test.js -e HOST_NAME=req_res",
+    "test_windows:jsondata_test": "k6.exe run --out dashboard src/tests/jsondata_test.js -e HOST_NAME=req_res"
   },
   "keywords": [],
   "author": "",
